@@ -1,6 +1,6 @@
 # Sleep Sentinel Privacy Notice
 
-Last updated: 2026-07-17
+Last updated: 2026-07-18
 
 Sleep Sentinel is a wellness-only Garmin Connect IQ app for the Fenix 7S Pro. This notice explains how Sleep Sentinel (the "developer") handles information associated with Sleep Sentinel.
 
@@ -36,7 +36,7 @@ Any information you choose to enter or store in Sleep Sentinel is submitted to S
 
 Sleep Sentinel keeps a rolling local history of no more than 30 completed nights. When a new completed night would exceed that cap, the oldest saved night is removed automatically. For an app-owned night, its associated sample chunks are deleted when that night is removed. An in-progress session may be stored separately while the app records or recovers that session.
 
-The current build does not provide an in-app control to delete an individual completed night or erase all history. To remove Sleep Sentinel and its app-local data, uninstall Sleep Sentinel from the watch using Garmin's app-management controls. Because the current build does not send watch data to the developer, the developer cannot view or remotely delete data held on the watch.
+The current build does not provide an in-app control to delete an individual completed night or erase all history. To remove one unambiguous Store-installed copy and its app-local data, uninstall Sleep Sentinel through the Connect IQ Store and complete a successful device sync. Do not use that instruction for a developer, sideloaded, duplicate, or ambiguous Sleep Sentinel identity; stop and contact support instead. Do not delete app files through USB/MTP or use Garmin Express for cleanup. Because the current build does not send watch data to the developer, the developer cannot view or remotely delete data held on the watch.
 
 ## Support Messages
 

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "source_path": "privacy-notice.md",
-  "source_sha256": "880fe599766819fe4d45165a83b11a6f48b4b0a22ef56b186f3ed82665b38c00",
+  "source_sha256": "89b76503a699fe5a0c4cf79073efc0d4e069f32f10ba7ae5f0d21a4bafce7560",
   "policy_url": "https://zohartito.github.io/sleep-sentinel-privacy/",
   "developer_name": "Sleep Sentinel",
   "support_email": "sleepsentinel@zohartito.com",
-  "html_sha256": "aa7989c72dc3d7b3490359cc3bf137d7bf235d84fec41111edf662e7213c0aed",
-  "notice_sha256": "bcf4fff6659300e89abd62a9029706ae4eea888ab8bcacbe475fe0939d28afbf"
+  "html_sha256": "2f072e2b8d4b19ba3951421d4d427e8fe74adcb205ddeb97dd19ffdce651b31a",
+  "notice_sha256": "5bb1aeeabec549a8119441dccc3c9c208d75b07bf559f894ec9092419ad6bf03"
 }
