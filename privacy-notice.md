@@ -1,6 +1,6 @@
 # Sleep Sentinel Privacy Notice
 
-Last updated: 2026-07-09
+Last updated: 2026-07-17
 
 Sleep Sentinel is a wellness-only Garmin Connect IQ app for the Fenix 7S Pro. This notice explains how Sleep Sentinel (the "developer") handles information associated with Sleep Sentinel.
 
@@ -20,11 +20,11 @@ Sleep Sentinel does not create a user account, require sign-in, request location
 
 ## Local Storage And No-Network Behavior
 
-The current build stores Sleep Sentinel data only in the app's own storage area on the watch. It does not send that data to the developer, a cloud service, an analytics service, an advertiser, or another third party. Local review works without a Sleep Sentinel account or server.
+Store v0.4 stores Sleep Sentinel data only in the app's own storage area on the watch. It does not send that data to the developer, a cloud service, an analytics service, an advertiser, or another third party. Local review works without a Sleep Sentinel account or server.
 
-The manifest includes the Connect IQ `Communications` permission for a future opt-in upload feature. In the current build, that feature is disabled and cannot be reached from the on-watch interface. The permission by itself does not cause a transmission, and the current build does not transmit Sleep Sentinel data over a network.
+Store v0.4 does not request the Connect IQ `Communications` permission and contains no watch-side network upload path. A hosted upload feature is deferred to a later release and would require separate consent, security, physical verification, and privacy review before it could ship.
 
-The **Export SSRAW** command writes a local text export to the Connect IQ Simulator or device console log. It does not upload the export. Anyone who chooses to copy or share an export outside the watch is responsible for where that copy is stored and who receives it.
+The **Export SSRAW** command prints a local text export to the Connect IQ Simulator or device console log. It does not upload or otherwise transmit the export. Anyone who chooses to copy or share an export outside the watch is responsible for where that copy is stored and who receives it.
 
 ## Garmin Data And Responsibility
 
