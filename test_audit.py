@@ -1,6 +1,7 @@
 """Offline audit regressions. Run with: python3 -B -m unittest discover -v."""
 
 from pathlib import Path
+from html.parser import HTMLParser
 import hashlib
 import json
 import re
@@ -71,6 +72,37 @@ class PublicationAuditTests(unittest.TestCase):
             with self.subTest(digest=field):
                 actual = hashlib.sha256((ROOT / filename).read_bytes()).hexdigest()
                 self.assertEqual(record[field], actual, f"{field} must hash {filename}")
+
+    def test_ssp_n1_communications_is_an_html_code_span(self):
+        class PolicyParser(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.in_code = False
+                self.code_spans = []
+                self.visible_text = []
+
+            def handle_starttag(self, tag, attrs):
+                if tag == "code":
+                    self.in_code = True
+                    self.code_spans.append("")
+
+            def handle_endtag(self, tag):
+                if tag == "code":
+                    self.in_code = False
+
+            def handle_data(self, data):
+                self.visible_text.append(data)
+                if self.in_code:
+                    self.code_spans[-1] += data
+
+        policy = PolicyParser()
+        policy.feed((ROOT / "index.html").read_text())
+        policy.close()
+        self.assertIn("Communications", policy.code_spans)
+        self.assertFalse(
+            "`Communications`" in "".join(policy.visible_text),
+            "Published text must not show Markdown backtick delimiters",
+        )
 
 
 if __name__ == "__main__":
