@@ -21,6 +21,7 @@ class WorkflowAuditTests(unittest.TestCase):
             "read-only contents": bool(re.search(r"(?m)^      contents: read\s*(?:#.*)?$", self.review)),
             "review comments": bool(re.search(r"(?m)^      pull-requests: write\s*(?:#.*)?$", self.review)),
             "no OIDC token exchange": "id-token:" not in self.review,
+            "no automatic tool permissions": "--permission-mode default" in self.review,
         }
         for label, satisfied in checks.items():
             with self.subTest(policy=label):
@@ -48,6 +49,15 @@ class WorkflowAuditTests(unittest.TestCase):
 
     def test_ssp_n2_token_comment_does_not_claim_action_cannot_push(self):
         self.assertNotIn("CANNOT push", self.review)
+
+    def test_ssp_08_all_workflow_actions_use_full_commit_pins(self):
+        workflows = sorted((ROOT / ".github/workflows").glob("*.y*ml"))
+        self.assertTrue(workflows)
+        for workflow in workflows:
+            references = re.findall(r"(?m)^\s*(?:-\s*)?uses:\s*([^\s#]+)", workflow.read_text())
+            for reference in references:
+                with self.subTest(workflow=workflow.name, action=reference):
+                    self.assertRegex(reference, r"^[^@\s]+@[0-9a-f]{40}$")
 
 
 class PublicationAuditTests(unittest.TestCase):
