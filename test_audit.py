@@ -1,6 +1,8 @@
 """Offline audit regressions. Run with: python3 -B -m unittest discover -v."""
 
 from pathlib import Path
+import hashlib
+import json
 import re
 import unittest
 
@@ -46,6 +48,19 @@ class WorkflowAuditTests(unittest.TestCase):
 
     def test_ssp_n2_token_comment_does_not_claim_action_cannot_push(self):
         self.assertNotIn("CANNOT push", self.review)
+
+
+class PublicationAuditTests(unittest.TestCase):
+    def test_ssp_03_publication_digests_match_files(self):
+        record = json.loads((ROOT / "publication-record.json").read_text())
+        for field, filename in (
+            ("source_sha256", record["source_path"]),
+            ("notice_sha256", "privacy-notice.md"),
+            ("html_sha256", "index.html"),
+        ):
+            with self.subTest(digest=field):
+                actual = hashlib.sha256((ROOT / filename).read_bytes()).hexdigest()
+                self.assertEqual(record[field], actual, f"{field} must hash {filename}")
 
 
 if __name__ == "__main__":
